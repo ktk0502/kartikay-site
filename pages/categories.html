@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - ModernSite</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .category-detail {
+            margin-top: 50px;
+            display: none;
+        }
+        .category-detail.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .back-to-categories {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-to-categories i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Modern<span>Site</span></a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Categories Section -->
+    <section class="categories" style="padding-top: 150px;">
+        <div class="container">
+            <h2>Our Categories</h2>
+            <div class="category-grid" id="categoryGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+
+            <!-- Category Detail View -->
+            <div id="categoryDetail" class="category-detail">
+                <a href="#" class="back-to-categories" id="backToCategories">
+                    <i class="fas fa-arrow-left"></i> Back to Categories
+                </a>
+                <div id="categoryContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ModernSite</h3>
+                    <p>Creating beautiful digital experiences.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ModernSite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Categories data
+        const categories = [
+            {
+                id: 'design',
+                title: 'Design',
+                icon: 'paint-brush',
+                description: 'Beautiful designs that captivate and inspire.',
+                content: `
+                    <h2>Design Services</h2>
+                    <p>Our design services are tailored to create visually stunning and highly functional user experiences. We combine creativity with strategy to deliver designs that not only look great but also drive results.</p>
+                    
+                    <h3>Our Design Process</h3>
+                    <p>We follow a user-centered design approach that includes research, ideation, prototyping, and testing to ensure the best possible outcome for your project.</p>
+                    
+                    <div class="category-grid" style="margin-top: 30px;">
+                        <div class="category-card">
+                            <i class="fas fa-palette"></i>
+                            <h4>UI/UX Design</h4>
+                            <p>Intuitive and engaging user interfaces</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Responsive Design</h4>
+                            <p>Perfect on any device</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Brand Identity</h4>
+                            <p>Memorable brand experiences</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'development',
+                title: 'Development',
+                icon: 'code',
+                description: 'Robust and scalable solutions.',
+                content: `
+                    <h2>Development Services</h2>
+                    <p>We build high-performance, scalable web applications using the latest technologies and best practices. Our development process ensures clean, maintainable, and efficient code.</p>
+                    
+                    <h3>Technologies We Use</h3>
+                    <p>Our team is proficient in a wide range of technologies including HTML5, CSS3, JavaScript, React, Node.js, and more.</p>
+                    
+                    <div class="category-grid" style="margin-top: 30px;">
+                        <div class="category-card">
+                            <i class="fab fa-html5"></i>
+                            <h4>Frontend</h4>
+                            <p>HTML5, CSS3, JavaScript, React</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-server"></i>
+                            <h4>Backend</h4>
+                            <p>Node.js, Python, PHP, Databases</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-mobile"></i>
+                            <h4>Mobile</h4>
+                            <p>React Native, Flutter</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'marketing',
+                title: 'Marketing',
+                icon: 'bullhorn',
+                description: 'Strategies that drive results.',
+                content: `
+                    <h2>Marketing Services</h2>
+                    <p>Our marketing strategies are designed to increase your online presence, generate leads, and drive sales. We use data-driven approaches to ensure maximum ROI.</p>
+                    
+                    <h3>Our Approach</h3>
+                    <p>We develop customized marketing strategies based on your business goals, target audience, and industry trends.</p>
+                    
+                    <div class="category-grid" style="margin-top: 30px;">
+                        <div class="category-card">
+                            <i class="fas fa-search"></i>
+                            <h4>SEO</h4>
+                            <p>Improve your search rankings</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-ad"></i>
+                            <h4>PPC</h4>
+                            <p>Targeted advertising</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email Marketing</h4>
+                            <p>Engage your audience</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'consulting',
+                title: 'Consulting',
+                icon: 'chart-line',
+                description: 'Expert advice for your business.',
+                content: `
+                    <h2>Consulting Services</h2>
+                    <p>Our consulting services help businesses optimize their operations, improve efficiency, and achieve their strategic goals through technology and innovation.</p>
+                    
+                    <h3>Our Expertise</h3>
+                    <p>With years of experience across various industries, we provide valuable insights and actionable recommendations.</p>
+                    
+                    <div class="category-grid" style="margin-top: 30px;">
+                        <div class="category-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Strategy</h4>
+                            <p>Business and digital strategy</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-chart-pie"></i>
+                            <h4>Analytics</h4>
+                            <p>Data-driven decisions</p>
+                        </div>
+                        <div class="category-card">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Optimization</h4>
+                            <p>Process improvement</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryGrid = document.getElementById('categoryGrid');
+            const categoryDetail = document.getElementById('categoryDetail');
+            const categoryContent = document.getElementById('categoryContent');
+            const backToCategories = document.getElementById('backToCategories');
+
+            // Render categories
+            function renderCategories() {
+                categoryGrid.innerHTML = categories.map(category => `
+                    <div class="category-card" data-category="${category.id}">
+                        <i class="fas fa-${category.icon}"></i>
+                        <h3>${category.title}</h3>
+                        <p>${category.description}</p>
+                        <button class="btn" style="margin-top: 15px;">Learn More</button>
+                    </div>
+                `).join('');
+
+                // Add event listeners
+                document.querySelectorAll('.category-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const categoryId = this.getAttribute('data-category');
+                        showCategoryDetail(categoryId);
+                    });
+                });
+            }
+
+            // Show category detail
+            function showCategoryDetail(categoryId) {
+                const category = categories.find(cat => cat.id === categoryId);
+                if (category) {
+                    categoryContent.innerHTML = category.content;
+                    categoryGrid.style.display = 'none';
+                    categoryDetail.classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            // Back to categories
+            backToCategories.addEventListener('click', function(e) {
+                e.preventDefault();
+                categoryGrid.style.display = 'grid';
+                categoryDetail.classList.remove('active');
+            });
+
+            // Check URL for category ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryId = urlParams.get('category');
+            
+            if (categoryId) {
+                showCategoryDetail(categoryId);
+            }
+
+            // Initial render
+            renderCategories();
+        });
+    </script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
