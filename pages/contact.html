@@ -375,5 +375,34 @@
         });
     </script>
     <script src="../js/script.js"></script>
+    <script type='text/javascript' id='vwoCode'>
+    window._vwo_code || (function() {
+        var account_id=1030459,
+            settings_tolerance=2000,
+            hide_element='body',
+            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+        
+        // Create script element
+        var vwoScript = document.createElement('script');
+        vwoScript.src = 'https://dev.visualwebsiteoptimizer.com/lib/' + account_id + '.js';
+        vwoScript.type = 'text/javascript';
+        vwoScript.async = true;
+        vwoScript.onload = function() {
+            // Initialize VWO after script loads
+            if (window._vwo_code) {
+                _vwo_code.init({
+                    use_existing_jquery: false,
+                    settings_tolerance: settings_tolerance,
+                    hide_element: hide_element,
+                    hide_element_style: hide_element_style
+                });
+            }
+        };
+        
+        // Insert the script in the head
+        var s = document.getElementsByTagName('head')[0];
+        s.appendChild(vwoScript);
+    })();
+    </script>
 </body>
 </html>
